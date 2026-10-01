@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>EasyBook | Cabinets</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+
+<header class="navbar">
+
+    <a href="index.html"
+       class="logo">
+
+        Easy<span>Book</span>
+
+    </a>
+
+    <nav>
+
+        <a href="index.html">
+            Accueil
+        </a>
+
+        <a href="cabinets.html"
+           class="active">
+
+            Cabinets
+
+        </a>
+
+        <a href="appointments.html">
+            Mes rendez-vous
+        </a>
+
+        <a href="profile.html">
+            Profil
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="page">
+
+    <div class="page-header">
+
+        <p class="subtitle">
+            EASYBOOK
+        </p>
+
+        <h1>
+            Trouvez votre cabinet
+        </h1>
+
+        <p>
+            Choisissez un cabinet selon
+            votre ville ou spécialité.
+        </p>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Rechercher un cabinet..."
+        >
+
+
+        <select id="city">
+
+            <option value="">
+                Toutes les villes
+            </option>
+
+            <option value="Agadir">
+                Agadir
+            </option>
+
+            <option value="Marrakech">
+                Marrakech
+            </option>
+
+            <option value="Casablanca">
+                Casablanca
+            </option>
+
+            <option value="Rabat">
+                Rabat
+            </option>
+
+        </select>
+
+
+        <select id="specialty">
+
+            <option value="">
+                Toutes les spécialités
+            </option>
+
+            <option value="Médecine générale">
+                Médecine générale
+            </option>
+
+            <option value="Dermatologie">
+                Dermatologie
+            </option>
+
+            <option value="Dentiste">
+                Dentiste
+            </option>
+
+            <option value="Cardiologie">
+                Cardiologie
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div id="cabinetList"
+         class="cabinet-grid">
+
+    </div>
+
+</main>
+
+
+<script src="js/data.js"></script>
+<script src="js/cabinets.js"></script>
+
+</body>
+
+</html>
