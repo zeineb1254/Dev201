@@ -1,30 +1,149 @@
+/* Importation de la police 'Poppins' depuis Google Fonts pour un style moderne */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+/* Style global de la page (arrière-plan, police, et centrage) */
 body {
-    font-family: Arial, sans-serif;
-    background: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    /* Arrière-plan avec un dégradé de couleurs */
+    background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+    /* Centrage du contenu au milieu de l'écran */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
+/* Boîte principale (Conteneur) de la To-Do List */
 .container {
-    width: 400px;
-    margin: 100px auto;
-    background: white;
-    padding: 25px;
+    width: 450px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 25px;
+    /* Effet d'ombre 3D pour donner du relief à la boîte */
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2), inset 0px -5px 15px rgba(0,0,0,0.05);
+    /* Animation d'apparition (glissement vers le bas) au chargement */
+    animation: slideDown 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Style du titre principal */
+h1 {
     text-align: center;
-    border-radius: 10px;
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Groupe contenant le champ de texte et le bouton 'Ajouter' sur la même ligne */
+.input-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+/* Champ de saisie (Input) pour écrire les tâches */
 input {
-    padding: 10px;
-    width: 65%;
+    flex: 1;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    border-radius: 15px;
+    background: #f4f6f8;
+    /* Effet 3D creusé vers l'intérieur (inset) */
+    box-shadow: inset 5px 5px 10px #e1e3e5, inset -5px -5px 10px #ffffff;
+    outline: none;
+    transition: 0.3s;
 }
 
-button {
-    padding: 10px;
+/* Effet lumineux lorsque l'utilisateur clique sur le champ de saisie */
+input:focus {
+    box-shadow: inset 2px 2px 5px #e1e3e5, inset -2px -2px 5px #ffffff, 0 0 0 3px rgba(108, 99, 255, 0.2);
+}
+
+/* Bouton principal 'Ajouter' */
+button.add-btn {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 15px;
+    background: #6c63ff;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
+    /* Ombre pour l'effet de relief 3D (bouton surélevé) */
+    box-shadow: 0 6px 0 #4a41d4, 0 10px 15px rgba(108, 99, 255, 0.4);
+    transition: all 0.1s;
 }
 
-li {
-    list-style: none;
-    margin: 10px;
-    padding: 10px;
-    background: #eee;
+/* Effet d'enfoncement lorsque le bouton 'Ajouter' est cliqué */
+button.add-btn:active {
+    transform: translateY(6px); /* Le bouton descend de 6px */
+    box-shadow: 0 0px 0 #4a41d4, 0 2px 5px rgba(108, 99, 255, 0.4); /* L'ombre se réduit */
+}
+
+/* Liste non ordonnée contenant toutes les tâches */
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+/* --- Styles appliqués aux éléments générés dynamiquement par JavaScript --- */
+
+/* Style de chaque élément de la liste (Tâche) */
+#taskList li {
+    background: white !important; /* !important force l'application de ce style sur le JS */
+    padding: 15px 20px !important;
+    border-radius: 15px !important;
+    /* Effet 3D pour la tâche */
+    box-shadow: 5px 5px 15px #e1e3e5, -5px -5px 15px #ffffff !important;
+    margin-top: 15px !important;
+    margin-bottom: 0 !important;
+}
+
+/* Effet d'agrandissement léger au survol de la tâche avec la souris */
+#taskList li:hover {
+    transform: scale(1.02) !important;
+}
+
+/* Style du texte de la tâche */
+#taskList li span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #34495e;
+    transition: 0.3s;
+}
+
+/* Design du bouton 'Supprimer' généré en JavaScript */
+#taskList li button {
+    background: #ff4757 !important; /* Couleur rouge vif */
+    color: white !important;
+    border-radius: 10px !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    /* Ombre pour l'effet de relief 3D */
+    box-shadow: 0 4px 0 #c0392b !important;
+    transition: all 0.1s !important;
+    transform: translateY(0);
+}
+
+/* Effet d'enfoncement du bouton 'Supprimer' au clic */
+#taskList li button:active {
+    transform: translateY(4px) !important;
+    box-shadow: 0 0 0 #c0392b !important;
+}
+
+/* Définition de l'animation d'apparition du conteneur (glissement de haut en bas) */
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
