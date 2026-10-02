@@ -87,3 +87,18 @@ function loadTasks() {
         tasks.forEach(t => createTaskElement(t.text, t.completed, t.urgent));
     }
 }
+
+function filterTasks(filter) {
+    const tasks = document.querySelectorAll("#taskList li");
+
+    tasks.forEach(li => {
+        const span = li.querySelector("span");
+        const isCompleted = span.style.textDecoration.includes("line-through");
+
+        if (filter === "all") {
+            li.style.display = "flex";
+        } else if (filter === "completed") {
+            li.style.display = isCompleted ? "flex" : "none";
+        }
+    });
+}

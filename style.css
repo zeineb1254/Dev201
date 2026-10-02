@@ -147,3 +147,35 @@ ul {
         transform: translateY(0);
     }
 }
+/* --- Boutons de filtrage --- */
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.filters button {
+    border: none;
+    border-radius: 12px;
+    padding: 10px 15px;
+    background: #6c63ff;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #4a41d4, 0 6px 10px rgba(108, 99, 255, 0.25);
+    transition: all 0.15s;
+}
+
+.filters button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #4a41d4, 0 8px 12px rgba(108, 99, 255, 0.3);
+}
+
+.filters button:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #4a41d4;
+}
