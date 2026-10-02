@@ -663,3 +663,116 @@ footer h2 span {
     }
 
 }
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #212529;
+    --card-bg: #f8f9fa;
+    --border-color: #dee2e6;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --card-bg: #1e1e1e;
+    --border-color: #333333;
+}
+
+body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.card {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+#theme-toggle {
+    cursor: pointer;
+}
+/* ==================== DARK MODE REAL FIX ==================== */
+[data-theme="dark"] {
+    --light: #121824;
+    --white: #1e293b;
+    --dark: #ffffff;
+    --text: #cbd5e1;
+}
+
+[data-theme="dark"] body {
+    background-color: var(--light) !important;
+    color: var(--text) !important;
+}
+
+[data-theme="dark"] .navbar,
+[data-theme="dark"] .feature-card,
+[data-theme="dark"] .cabinet-card,
+[data-theme="dark"] .selected-cabinet,
+[data-theme="dark"] .reservation-form,
+[data-theme="dark"] .review-card,
+[data-theme="dark"] .review-form-card {
+    background-color: var(--white) !important;
+    color: var(--text) !important;
+    border: 1px solid #334155;
+}
+
+[data-theme="dark"] nav a,
+[data-theme="dark"] .feature-card h3,
+[data-theme="dark"] .logo {
+    color: #ffffff !important;
+}
+
+/* ==================== STYLES AVIS (CUSTOM CSS) ==================== */
+.reviews-section {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.review-form-card, .review-card {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+    margin-bottom: 25px;
+}
+
+.review-form-card h3 {
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: var(--white);
+    color: var(--text);
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
