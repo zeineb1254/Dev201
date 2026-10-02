@@ -13,7 +13,7 @@ function addTask() {
     const taskText = input.value.trim();
 
     if (!taskText) {
-        alert("Écris une tâche !");
+       alert("Veuillez saisir une tâche !");
         return;
     }
 
