@@ -117,6 +117,13 @@ ul {
     transition: 0.3s;
 }
 
+#taskList li .task-meta {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+    opacity: 0.9;
+}
+
 /* Design du bouton 'Supprimer' généré en JavaScript */
 #taskList li button {
     background: #ff4757 !important; /* Couleur rouge vif */
