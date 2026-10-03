@@ -8,32 +8,63 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+function formatTaskDate(dateValue) {
+    const date = new Date(dateValue);
+
+    if (Number.isNaN(date.getTime())) {
+        return "Date inconnue";
+    }
+
+    return date.toLocaleString("fr-FR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+}
+
 function addTask() {
     const input = document.getElementById("taskInput");
     const taskText = input.value.trim();
 
     if (!taskText) {
-       alert("Veuillez saisir une tâche !");
+        alert("Veuillez saisir une tâche !");
         return;
     }
 
-    createTaskElement(taskText, false, false);
+    const createdAt = new Date().toISOString();
+    createTaskElement(taskText, false, false, createdAt);
     saveTasks();
 
     input.value = "";
     input.focus();
 }
 
-function createTaskElement(text, completed = false, urgent = false) {
+function createTaskElement(text, completed = false, urgent = false, createdAt = new Date().toISOString()) {
     const li = document.createElement("li");
     li.style.cssText = "display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; transition: all 0.3s ease;";
+    li.dataset.createdAt = createdAt;
+
+    const taskContent = document.createElement("div");
+    taskContent.style.display = "flex";
+    taskContent.style.flexDirection = "column";
+    taskContent.style.gap = "4px";
 
     const span = document.createElement("span");
     span.textContent = text;
     span.style.cursor = "pointer";
+    span.title = "Cliquer pour marquer comme terminé";
 
     if (completed) span.style.textDecoration = "line-through";
     if (urgent) span.style.color = "#e74c3c";
+
+    const meta = document.createElement("small");
+    meta.className = "task-meta";
+    meta.textContent = `Ajoutée le ${formatTaskDate(createdAt)}`;
+
+    taskContent.appendChild(span);
+    taskContent.appendChild(meta);
 
     // Toggle Completed (Click)
     span.onclick = () => {
@@ -60,7 +91,7 @@ function createTaskElement(text, completed = false, urgent = false) {
         }, 300);
     };
 
-    li.appendChild(span);
+    li.appendChild(taskContent);
     li.appendChild(deleteBtn);
     document.getElementById("taskList").appendChild(li);
 }
@@ -73,7 +104,8 @@ function saveTasks() {
         tasks.push({
             text: span.textContent,
             completed: span.style.textDecoration === "line-through",
-            urgent: span.style.color === "rgb(231, 76, 60)"
+            urgent: span.style.color === "rgb(231, 76, 60)",
+            createdAt: li.dataset.createdAt || new Date().toISOString()
         });
     });
     localStorage.setItem("myTasks", JSON.stringify(tasks));
@@ -84,7 +116,7 @@ function loadTasks() {
     const saved = localStorage.getItem("myTasks");
     if (saved) {
         const tasks = JSON.parse(saved);
-        tasks.forEach(t => createTaskElement(t.text, t.completed, t.urgent));
+        tasks.forEach(t => createTaskElement(t.text, t.completed, t.urgent, t.createdAt || new Date().toISOString()));
     }
 }
 
